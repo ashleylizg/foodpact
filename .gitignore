@@ -115,3 +115,8 @@ dmypy.json
 
 # Visual Studio Code artifacts
 .vscode/
+
+# Stuff Ashley committed that should never be committed
+Include/
+Scripts/
+pip-selfcheck.json
