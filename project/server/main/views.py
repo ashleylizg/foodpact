@@ -15,3 +15,8 @@ def home():
 @main_blueprint.route('/calculator')
 def calculator():
     return render_template('main/calculator.html')
+
+
+@main_blueprint.route('/sources')
+def sources():
+    return render_template('main/sources.html')
