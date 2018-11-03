@@ -40,9 +40,9 @@ def get_environmental_prose(food_purchase_city, food_origin_country, food_name):
     output_string += htmlify('Purchased in ' + food_purchase_city)
     user_city = us_city_location[(us_city_location['city'] == food_purchase_city)]
     # FIXME snag lat/lng for city and food origin to calculate
-    newport_ri = (41.49008, -71.312796)
-    cleveland_oh = (41.499498, -81.695391)
-    dist_btw = distance.great_circle(newport_ri, cleveland_oh).miles
+    origin_coords = (float(user_food_origin['lat']), float(user_food_origin['lng']))
+    destination_coords = (float(user_city['lat']), float(user_city['lng']))
+    dist_btw = distance.great_circle(origin_coords, destination_coords).miles
     output_string += htmlify('Your food travelled approximately ' + str(dist_btw) + ' miles.')
     # values to multiply by great circle mile calculation
     # ocean transport for refrigerated/temperature sensitive goods. Units = grams of CO2 per TEU kilometer (volume)
