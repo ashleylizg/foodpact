@@ -12,6 +12,9 @@ import pandas as pd
 
 # TODO move all this stuff out of views.py because it really doesn't belong here
 
+def htmlify(string):
+    return '<div class="row"><p>' + string + '</p></div>'
+
 def tons_to_gallons(x):
     return(x * 264.17)
 
@@ -27,23 +30,20 @@ def get_environmental_prose(food_purchase_city, food_origin_country, food_name):
     HTML-formatted words about the environmental impact of this process.
     """
     output_string = ''
-    # food_purchase_city i.e. 'Syracuse, NY'
-    output_string += '<p>Purchased in ' + food_purchase_city + '</p><br>'
-    user_city = us_city_location[(us_city_location['city'] == food_purchase_city)]
-    # food_origin_country i.e. 'Mexico'
-    output_string += '<p>Originated from ' + food_origin_country + '</p><br>'
-    user_food_origin = country_location[(country_location['country'] == food_origin_country)]
     # food_name i.e. 'grapes'
+    output_string += htmlify('Food is ' + food_name)
     user_food = water_use[(water_use['food'] == food_name)]
+    # food_origin_country i.e. 'Mexico'
+    output_string += htmlify('Originated from ' + food_origin_country)
+    user_food_origin = country_location[(country_location['country'] == food_origin_country)]
+    # food_purchase_city i.e. 'Syracuse, NY'
+    output_string += htmlify('Purchased in ' + food_purchase_city)
+    user_city = us_city_location[(us_city_location['city'] == food_purchase_city)]
     # FIXME snag lat/lng for city and food origin to calculate
     newport_ri = (41.49008, -71.312796)
     cleveland_oh = (41.499498, -81.695391)
     dist_btw = distance.great_circle(newport_ri, cleveland_oh).miles
-    output_string += '<p>'
-    output_string += 'Your food travelled approximately '
-    output_string += str(dist_btw)
-    output_string += ' miles.'
-    output_string += '</p><br>'
+    output_string += htmlify('Your food travelled approximately ' + str(dist_btw) + ' miles.')
     # values to multiply by great circle mile calculation
     # ocean transport for refrigerated/temperature sensitive goods. Units = grams of CO2 per TEU kilometer (volume)
     # reefer value multiplied by 0.621371 to get how many grams per mile
@@ -56,15 +56,8 @@ def get_environmental_prose(food_purchase_city, food_origin_country, food_name):
     ghg_reefer = dist_btw * reefer
     ghg_rail = dist_btw * rail
     ghg_truck = dist_btw * truck
-    output_string += '<p>'
-    output_string += 'Carbon dioxide emissions are between: '
-    output_string += str(ghg_rail)
-    output_string += ','
-    output_string += str(ghg_reefer)
-    output_string += ', and '
-    output_string += str(ghg_truck)
-    output_string += ' grams.'
-    output_string += '</p><br>'
+    output_string += htmlify('Carbon dioxide emissions are between: ' + str(ghg_rail) \
+                                            + ',' + str(ghg_reefer) + ', and ' + str(ghg_truck) + ' grams.')
     # TEU referencing a standard shipping container, meaning twenty-foot equivalent unit
     # convert grams to pounds
     # 1 gram = 0.00220462 lbs.
@@ -72,26 +65,13 @@ def get_environmental_prose(food_purchase_city, food_origin_country, food_name):
     ghg_rf_lbs = ghg_reefer * g_to_lbs
     ghg_rl_lbs = ghg_rail * g_to_lbs
     ghg_tk_lbs = ghg_truck * g_to_lbs
-    output_string += '<p>'
-    output_string += 'Carbon dioxide emissions are between: '
-    output_string += str(ghg_rl_lbs)
-    output_string += ', '
-    output_string += str(ghg_rf_lbs)
-    output_string += ', and '
-    output_string += str(ghg_tk_lbs)
-    output_string += ' pounds.'
-    output_string += '</p><br>'
+    output_string += htmlify('Carbon dioxide emissions are between: ' + str(ghg_rl_lbs) \
+                                        + ', ' + str(ghg_rf_lbs) + ', and ' + str(ghg_tk_lbs) + ' pounds.')
     # water use
     # units = metric tons of water
     for index, row in user_food.iterrows():
-        output_string += '<p>'
-        output_string += 'Blue water use in gallons per lb: '
-        output_string += str(row["blue gal per lb"])
-        output_string += '</p><br>'
-        output_string += '<p>'
-        output_string += 'Total water use in gallons per lb: '
-        output_string += str(row["total gal per lb"])
-        output_string += '</p><br>'
+        output_string += htmlify('Blue water use in gallons per lb: ' + str(row["blue gal per lb"]))
+        output_string += htmlify('Total water use in gallons per lb: ' + str(row["total gal per lb"]))
     return output_string
 
 

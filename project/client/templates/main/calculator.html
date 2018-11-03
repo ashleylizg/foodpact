@@ -7,9 +7,7 @@
         <h1>Calculator</h1>
     </div>
     {% if environmental_info_output is not none %}
-    <div class="row">
         {{ environmental_info_output|safe }}
-    </div>
     {% endif %}
     <div class="row">
         <form><!-- This will make an HTTP GET request with the info as query parameters -->
