@@ -6,43 +6,36 @@
     <div class="row">
         <h1>Calculator</h1>
     </div>
-    <div class="row" style="display: none">
-        <p>Your food travelled approximately <span>123</span> miles.</p>
-        <!-- <p>Carbon dioxide emissions are between <span>157233</span>, <span>313988</span>, and <span>320803</span> grams.</p> -->
-        <p>Carbon dioxide emissions are between <span>347</span>, <span>692</span>, and <span>707</span> pounds.</p>
-        <p>Blue water use in gallons per pound: <span>13</span></p>
-        <p>Total water use in gallons per pound: <span>80</span></p>
-    </div>
+    {% if environmental_info_output is not none %}
     <div class="row">
-        <form method="post" action="/calculator">
+        {{ environmental_info_output|safe }}
+    </div>
+    {% endif %}
+    <div class="row">
+        <form><!-- This will make an HTTP GET request with the info as query parameters -->
             <fieldset>
                 <div class="form-group">
                     <label for="foodBuyLocationSelect">Where did you buy your food?</label>
-                    <select class="form-control" id="foodBuyLocationSelect">
-                        <option>Place1</option>
-                        <option>Place2</option>
-                        <option>Place3</option>
-                        <option>Place4</option>
-                        <option>Place5</option>
+                    <select class="form-control" id="foodBuyLocationSelect" name="food_location">
+                    {% for food_location in food_locations|default(["Syracuse, NY","New York, NY"], true) %}
+                        <option value="{{ loop.index }}">{{ food_location }}</option>
+                    {% endfor %}
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="foodSelect">What was the food?</label>
-                    <select class="form-control" id="foodSelect">
-                        <option>Wheat</option>
-                        <option>White rice</option>
-                        <option>Brown rice</option>
-                        <option>Barley</option>
-                        <option>Corn</option>
+                    <select class="form-control" id="foodSelect" name="food_name">
+                    {% for food_name in food_names|default(["Grapes","Wheat"], true) %}
+                        <option value="{{ loop.index }}">{{ food_name }}</option>
+                    {% endfor %}
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="foodOriginLocationSelect">Do you know where it came from?</label>
-                    <select class="form-control" id="foodOriginLocationSelect">
-                        <option>I DON'T KNOW</option>
-                        <option>Place1</option>
-                        <option>Place2</option>
-                        <option>Place3</option>
+                    <select class="form-control" id="foodOriginLocationSelect" name="food_origin">
+                    {% for food_origin in food_origins|default(["Mexico","Aruba"], true) %}
+                        <option value="{{ loop.index }}">{{ food_origin }}</option>
+                    {% endfor %}
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
