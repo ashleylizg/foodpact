@@ -135,9 +135,9 @@ def calculator():
     food_name = request.args.get('food_name')
     food_origin = request.args.get('food_origin')
     if food_location is not None and food_name is not None and food_origin is not None:
-        food_location_arg = 'Syracuse, NY'
-        food_name_arg = 'wheat'
-        food_origin_arg = 'Aruba'
+        food_location_arg = US_CITIES_LIST[int(food_location) - 1]
+        food_name_arg = FOOD_NAMES_LIST[int(food_name) - 1]
+        food_origin_arg = COUNTRIES_LIST[int(food_origin) - 1]
         environmental_info_output = get_environmental_prose(food_location_arg, food_origin_arg, food_name_arg)
     return render_template('main/calculator.html',
                             food_locations=US_CITIES_LIST,
