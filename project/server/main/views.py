@@ -43,7 +43,7 @@ def get_environmental_prose(food_purchase_city, food_origin_country, food_name):
     origin_coords = (float(user_food_origin['lat']), float(user_food_origin['lng']))
     destination_coords = (float(user_city['lat']), float(user_city['lng']))
     dist_btw = distance.great_circle(origin_coords, destination_coords).miles
-    output_string += htmlify('Your food travelled approximately ' + str(dist_btw) + ' miles.')
+    output_string += htmlify('Your food travelled approximately ' + str(round(dist_btw,2)) + ' miles.')
     # values to multiply by great circle mile calculation
     # ocean transport for refrigerated/temperature sensitive goods. Units = grams of CO2 per TEU kilometer (volume)
     # reefer value multiplied by 0.621371 to get how many grams per mile
@@ -56,8 +56,8 @@ def get_environmental_prose(food_purchase_city, food_origin_country, food_name):
     ghg_reefer = dist_btw * reefer
     ghg_rail = dist_btw * rail
     ghg_truck = dist_btw * truck
-    output_string += htmlify('Carbon dioxide emissions are between: ' + str(ghg_rail) \
-                                            + ',' + str(ghg_reefer) + ', and ' + str(ghg_truck) + ' grams.')
+    output_string += htmlify('Carbon dioxide emissions are between: ' + str(round(ghg_rail,2)) \
+                                            + ',' + str(round(ghg_reefer,2)) + ', and ' + str(round(ghg_truck,2)) + ' grams.')
     # TEU referencing a standard shipping container, meaning twenty-foot equivalent unit
     # convert grams to pounds
     # 1 gram = 0.00220462 lbs.
@@ -65,13 +65,13 @@ def get_environmental_prose(food_purchase_city, food_origin_country, food_name):
     ghg_rf_lbs = ghg_reefer * g_to_lbs
     ghg_rl_lbs = ghg_rail * g_to_lbs
     ghg_tk_lbs = ghg_truck * g_to_lbs
-    output_string += htmlify('Carbon dioxide emissions are between: ' + str(ghg_rl_lbs) \
-                                        + ', ' + str(ghg_rf_lbs) + ', and ' + str(ghg_tk_lbs) + ' pounds.')
+    output_string += htmlify('Carbon dioxide emissions are between: ' + str(round(ghg_rl_lbs,2)) \
+                                        + ', ' + str(round(ghg_rf_lbs,2)) + ', and ' + str(round(ghg_tk_lbs,2)) + ' pounds.')
     # water use
     # units = metric tons of water
     for index, row in user_food.iterrows():
-        output_string += htmlify('Blue water use in gallons per lb: ' + str(row["blue gal per lb"]))
-        output_string += htmlify('Total water use in gallons per lb: ' + str(row["total gal per lb"]))
+        output_string += htmlify('Blue water use in gallons per lb: ' + str(round(row["blue gal per lb"],2)))
+        output_string += htmlify('Total water use in gallons per lb: ' + str(round(row["total gal per lb"],2)))
     return output_string
 
 
@@ -81,7 +81,7 @@ THIS_DIR = path.dirname(path.abspath(__file__))
 CSV_DIR = path.join(THIS_DIR, '..', '..', 'client', 'static', 'csv')
 print('Thinks CSV dir = ' + str(CSV_DIR)) # This line is debug
 
-us_cities_csv = path.join(CSV_DIR, 'uscitiesv1.4.csv')
+us_cities_csv = path.join(CSV_DIR, 'uscitiesv1.4_top5.csv')
 country_centroids_csv = path.join(CSV_DIR, 'country_centroids_az8.csv')
 crops_water_csv = path.join(CSV_DIR, 'selected_crops_waterprint.csv')
 
