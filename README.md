@@ -15,7 +15,7 @@ Here for Powershell -
 git clone <this_repo>
 cd <this_repo>
 
-virtualenv venv
+python -m virtualenv venv
 
 .\venv\scripts\activate.ps1
 ```
@@ -39,3 +39,11 @@ python manage.py run
 ```
 
 Access the application at the address [http://localhost:5000/](http://localhost:5000/).
+
+### When you're done
+
+Deactivate the virtual environment!
+
+```powershell
+deactivate
+```
