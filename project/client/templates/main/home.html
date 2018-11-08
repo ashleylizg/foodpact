@@ -1,110 +1,125 @@
 {% extends "_base.html" %}
-
 {% block content %}
-<head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
 <div class="body-content">
   <div class="row">
     <div class="col-md-12 text-center">
-      <h1>Food you eat impacts the environment</h1>
+      <img class="img-fluid" src="{{ url_for('static', filename='img/transparent-1.png') }}" style="width:300px;height:210px;">
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-12 text-center">
-      <p>It's hard to understand the environmental impact of everyday foods you eat. Where do you even start?</p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12 text-center">
-      <p>We'll start by looking at ecological costs from transportation and water.</p>
-      <b></b>
-      <p>For consumers in the United States, our food comes from all over the world.</p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12 text-center">
-      <img class="img-fluid" src="{{ url_for('static', filename='img/food_imports.svg') }}">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12 text-center">
-      <p>Food transport will be broken down into 3 main categories:</p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4 text-center">
-      <p>Ocean</p>
-      <img class="img fluid" src="{{ url_for('static', filename='img/005-cargo-ship.svg') }}" style="width:15%;height:15%;">
-    </div>
-    <div class="col-md-4 text-center">
-      <p>Rail</p>
-      <img class="img fluid" src="{{ url_for('static', filename='img/015-toy.svg') }}" style="width:15%;height:15%;">
-    </div>
-    <div class="col-md-4 text-center">
-      <p>Freight</p>
-      <img class="img fluid" src="{{ url_for('static', filename='img/002-truck.svg') }}" style="width:15%;height:15%;">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12 text-center">
-      <p>We'll take a look at greenhouse gas production from food transport in the form of carbon dioxide.</p>
-    </div>  
-  </div>    
-  <div class="row">
-    <div class="col-md-12 text-center">
-      <h2>Food Import Categories</h2>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12 text-center">
-      <p>We'll focus on plant products because most imports come from this category.</p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12 text-center">
-      <img class="img-fluid" src="{{ url_for('static', filename='img/food_import_cat_totals.svg') }}">
-    </div>
-  <div class="row">
-    <div class="col-md-12 text-center">
-      <h2>What is a water footprint?</h2>
-      <b></b>
-      <p>A water footprint breaks down the types of water inputs for growing food.</p>
-      <p>There are different footprints to make up the total water footprint for a crop.</p>
-      <p>Blue + Green + Grey = Total</p>
-      <div class="row">
-          <div class="column">Blue +</div>
-            <img class="img fluid" src="{{ url_for('static', filename='img/022-watering-can.svg') }}" style="width:15%;height:15%;">
-          <div class="column"> Green +</div>
-            <img class="img fluid" src="{{ url_for('static', filename='img/038-rain-1.svg') }}" style="width:15%;height:15%;">
-          <div class="column"> Grey =</div>
-            <img class="img fluid" src="{{ url_for('static', filename='img/027-sewer.svg') }}" style="width:15%;height:15%;">
-          <div class="column"> Total</div>
-            <img class="img fluid" src="{{ url_for('static', filename='img/006-drops.svg') }}" style="width:15%;height:15%;">
-      </div>
-          </div>
-      <b></b>
-      <ul>
-        <li>Blue: Surface water & groundwater inputs</li>
-        <li>Green: Rainwater inputs</li>
-        <li>Grey: Volume of freshwater to balance out pollutants from crop production</li>
-      </ul>
-    </div>
-  </div>
-<body>
-  <i class="fas fa-stroopwafel"></i>
-</body>
-  <div class="row">
-      <div class="col-md-12 text-center">
-        <img class="img-fluid" src="{{ url_for('static', filename='img/water_footprints.svg') }}">
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12 text-center">
-      <img class="img-fluid" src="{{ url_for('static', filename='img/food_waste_2010.svg') }}">
-    </div>
-  </div>
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<h1>Food you eat impacts the environment</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<p>It's hard to understand the environmental impact of everyday foods you eat. Where do you even start?</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<p>We'll start by looking at ecological costs from transportation and water.</p>
+			<br>
+			<p>For consumers in the United States, our food comes from all over the world.</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<img class="img-fluid" src="{{ url_for('static', filename='img/food_imports.svg') }}">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<p>Food transport will be broken down into 3 main categories:</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4 text-center">
+			<p>Ocean</p>
+			<img class="img fluid" src="{{ url_for('static', filename='img/005-cargo-ship.svg') }}" style="width:50%;height:50%;">
+		</div>
+		<div class="col-md-4 text-center">
+			<p>Rail</p>
+			<img class="img fluid" src="{{ url_for('static', filename='img/015-toy.svg') }}" style="width:50%;height:50%;">
+		</div>
+		<div class="col-md-4 text-center">
+			<p>Freight</p>
+			<img class="img fluid" src="{{ url_for('static', filename='img/002-truck.svg') }}" style="width:50%;height:50%;">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<p>We'll take a look at greenhouse gas production from food transport in the form of carbon dioxide.</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<h2>Food Import Categories</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<p>We'll focus on plant products because most imports come from this category.</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<img class="img-fluid" src="{{ url_for('static', filename='img/food_import_cat_totals.svg') }}">
+		</div>
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<h2>What is a water footprint?</h2>
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<p>A water footprint breaks down the types of water inputs for growing food.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<p>There are different footprints to make up the total water footprint for a crop.</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3 text-center">
+					<p>Blue</p>
+					<img class="img fluid" src="{{ url_for('static', filename='img/022-watering-can.svg') }}" style="width:50%;height:50%;">
+				</div>
+				<div class="col-md-3 text-center">
+					<p>Green</p>
+					<img class="img fluid" src="{{ url_for('static', filename='img/038-rain-1.svg') }}" style="width:50%;height:50%;">
+				</div>
+				<div class="col-md-3 text-center">
+					<p>Grey</p>
+					<img class="img fluid" src="{{ url_for('static', filename='img/027-sewer.svg') }}" style="width:50%;height:50%;">
+				</div>
+				<div class="col-md-3 text-center">
+					<p>Total</p>
+					<img class="img fluid" src="{{ url_for('static', filename='img/006-drops.svg') }}" style="width:50%;height:50%;">
+				</div>
+			</div>
+		</div>
+		<br>
+		<ul>
+			<li>Blue: Surface water & groundwater inputs</li>
+			<li>Green: Rainwater inputs</li>
+			<li>Grey: Volume of freshwater to balance out pollutants from crop production</li>
+		</ul>
+	</div>
 </div>
-
+<body>
+	<i class="fas fa-stroopwafel"></i>
+</body>
+<div class="row">
+	<div class="col-md-12 text-center">
+		<img class="img-fluid" src="{{ url_for('static', filename='img/water_footprints.svg') }}">
+	</div>
+</div>
+</div>
+<div class="row">
+	<div class="col-md-12 text-center">
+		<img class="img-fluid" src="{{ url_for('static', filename='img/food_waste_2010.svg') }}">
+	</div>
+</div>
+</div>
 {% endblock %}
