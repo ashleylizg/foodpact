@@ -29,16 +29,35 @@
   </div>
   <div class="row">
     <div class="col-md-12 text-center">
-      <p>Food transport will be broken down into 3 main categories:
-        <ul>
-          <li>Ocean</li>
-            <img class="img fluid" src="{{ url_for('static', filename='img/005-cargo-ship.svg') }}">
-          <li>Rail</li>
-          <li>Freight</li>
-        </ul>
-      </p>
+      <p>Food transport will be broken down into 3 main categories:</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 text-center">
+      <p>Ocean</p>
+      <img class="img fluid" src="{{ url_for('static', filename='img/005-cargo-ship.svg') }}" style="width:15%;height:15%;">
+    </div>
+    <div class="col-md-4 text-center">
+      <p>Rail</p>
+      <img class="img fluid" src="{{ url_for('static', filename='img/015-toy.svg') }}" style="width:15%;height:15%;">
+    </div>
+    <div class="col-md-4 text-center">
+      <p>Freight</p>
+      <img class="img fluid" src="{{ url_for('static', filename='img/002-truck.svg') }}" style="width:15%;height:15%;">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-center">
       <p>We'll take a look at greenhouse gas production from food transport in the form of carbon dioxide.</p>
+    </div>  
+  </div>    
+  <div class="row">
+    <div class="col-md-12 text-center">
       <h2>Food Import Categories</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-center">
       <p>We'll focus on plant products because most imports come from this category.</p>
     </div>
   </div>
@@ -53,6 +72,17 @@
       <p>A water footprint breaks down the types of water inputs for growing food.</p>
       <p>There are different footprints to make up the total water footprint for a crop.</p>
       <p>Blue + Green + Grey = Total</p>
+      <div class="row">
+          <div class="column">Blue +</div>
+            <img class="img fluid" src="{{ url_for('static', filename='img/022-watering-can.svg') }}" style="width:15%;height:15%;">
+          <div class="column"> Green +</div>
+            <img class="img fluid" src="{{ url_for('static', filename='img/038-rain-1.svg') }}" style="width:15%;height:15%;">
+          <div class="column"> Grey =</div>
+            <img class="img fluid" src="{{ url_for('static', filename='img/027-sewer.svg') }}" style="width:15%;height:15%;">
+          <div class="column"> Total</div>
+            <img class="img fluid" src="{{ url_for('static', filename='img/006-drops.svg') }}" style="width:15%;height:15%;">
+      </div>
+          </div>
       <b></b>
       <ul>
         <li>Blue: Surface water & groundwater inputs</li>
